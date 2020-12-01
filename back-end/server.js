@@ -10,12 +10,12 @@ app.use(bodyParser.urlencoded({
 const mongoose = require('mongoose');
 
 // connect to the database
-mongoose.connect('mongodb://localhost:27017/museum', {
+mongoose.connect('mongodb://localhost:27017/pokemon', {
   useNewUrlParser: true
 });
 const multer = require('multer')
 const upload = multer({
-  dest: '../front-end/public/images/',
+  dest: '/var/www/createPokemon.jrodhanson.com/images/',
   limits: {
     fileSize: 10000000
   }
@@ -86,4 +86,4 @@ app.get('/api/items', async (req, res) => {
 });
 
 
-app.listen(3000, () => console.log('Server listening on port 3000!'));
+app.listen(3001, () => console.log('Server listening on port 3001!'));
