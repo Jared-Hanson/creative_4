@@ -1,10 +1,23 @@
 <template>
-<div class="home">
+<div class="ViewPokemon">
   <section class="image-gallery">
     <div class="image" v-for="item in items" :key="item.id">
-      <h2>{{item.title}}</h2>
-      <p>{{item.discription}}</p>
-      <img :src="item.path" />
+      <h2>{{item.name}}</h2>
+      <p>{{item.type_one}}/{{item.type_two}}</p>
+      <p>Weight: {{item.weight}} Height: {{item.height}}</p>
+      <div class="imageAndStats">
+        <img :src="item.path" />
+        <p>HP: {{item.hp}}</p>
+        <p>Special Attack: {{item.sp_attack}} Attack: {{item.attack}}</p>
+        <p>Special Defense: {{item.sp_defense}} Special Defense: {{item.defense}}</p>
+        </div>
+        <div id="app">
+          <button v-on:click="isHidden = !isHidden"> Show Moves </button>
+  
+          <h1 v-if="!isHidden">{{item.move1}} ---- {{item.move2}} </h1>
+          <h1 v-if="!isHidden">{{item.move3}}  ---- {{item.move3}} </h1>
+        </div>
+      
     </div>
   </section>
 </div>
@@ -15,10 +28,11 @@
 import axios from 'axios';
 export default {
   
-  name: 'Home',
+  name: 'ViewPokemon',
   data() {
     return {
      items: [],
+     isHidden: false,
     }
   },
   created() {
@@ -56,31 +70,34 @@ export default {
 .image {
   margin: 0 0 1.5em;
   display: inline-block;
-  width: 100%;
+  width: 40%;
+}
+.imageAndStats {
+  display: block;
 }
 
 .image img {
-  width: 100%;
+  width: 40%;
 }
 
 /* Masonry on large screens */
 @media only screen and (min-width: 1024px) {
   .image-gallery {
-    column-count: 4;
+    column-count: 1;
   }
 }
 
 /* Masonry on medium-sized screens */
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
   .image-gallery {
-    column-count: 3;
+    column-count: 1;
   }
 }
 
 /* Masonry on small screens */
 @media only screen and (max-width: 767px) and (min-width: 540px) {
   .image-gallery {
-    column-count: 2;
+    column-count: 1;
   }
 }
 </style>

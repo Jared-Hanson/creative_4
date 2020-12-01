@@ -7,14 +7,15 @@
       </div>
     </router-link>
     <div class="title">
-      <h1>Museum of Ordinary Objects</h1>
+      <h1>Make your own POKEMON!</h1>
     </div>
+    
   </div>
   <div class="content">
     <router-view />
   </div>
   <div class="footer">
-    <router-link to="/admin">Admin</router-link>
+    <router-link to="/ViewPokemon">See other User Pokemon!</router-link>
   </div>
 </div>
 </template>
@@ -34,11 +35,15 @@ body {
 
 /* Header */
 .header {
-  display: flex;
+  
   padding: 10px 100px 0px 100px;
-  background-color: #5BDEFF;
-  color: #1C454F;
+  background-color: #ff0000;
+  color: #ffffff;
 }
+.logo img {
+  width: 10%;
+}
+
 
 .title {
   margin-top: 5px;

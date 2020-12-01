@@ -21,8 +21,20 @@ const upload = multer({
   }
 });
 const itemSchema = new mongoose.Schema({
-  title: String,
-  discription: String,
+  name: String,
+  type_one: String,
+  type_two: String,
+  height: String,
+  weight: String,
+  hp: String,
+  attack: String,
+  sp_attack: String,
+  defense: String,
+  sp_defense: String,
+  move1: String,
+  move2: String, 
+  move3: String,
+  move4: String,
   path: String,
 });
 app.post('/api/photos', upload.single('photo'), async (req, res) => {
@@ -38,8 +50,21 @@ app.post('/api/photos', upload.single('photo'), async (req, res) => {
 const Item = mongoose.model('Item', itemSchema);
 app.post('/api/items', async (req, res) => {
   const item = new Item({
-    title: req.body.title,
-    discription: req.body.discription,
+    name: req.body.name,
+    type_one: req.body.type_one,
+    type_two: req.body.type_two,
+    height: req.body.height,
+    weight: req.body.weight,
+    hp: req.body.hp,
+    attack: req.body.attack,
+    sp_attack: req.body.sp_attack,
+    defense: req.body.defense,
+    sp_defense: req.body.sp_defense,
+    move1: req.body.move1,
+    move2: req.body.move2,
+    move3: req.body.move3,
+    move4: req.body.move4,
+
     path: req.body.path,
   });
   try {
@@ -59,32 +84,6 @@ app.get('/api/items', async (req, res) => {
     res.sendStatus(500);
   }
 });
-app.delete('/api/items/:id', async (req, res) => {
-  try {
-    await Item.deleteOne({
-      _id: req.params.id
-    });
-    res.sendStatus(200);
-  } catch (error) {
-    console.log(error);
-    res.sendStatus(500);
-  }
-});
-app.put('/api/items/:id', async (req, res) => {
-  try {
-    item = await Item.findOne({
-      _id: req.params.id
-    });
-    console.log(item.title)
-    console.log(req.body.title)
-    item.title = req.body.title
-    item.discription = req.body.discription
-    item.save()
-    console.log(item.title)
-    res.sendStatus(200);
-  } catch (error) {
-    console.log(error);
-    res.sendStatus(500);
-  }
-});
+
+
 app.listen(3000, () => console.log('Server listening on port 3000!'));

@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Admin from '../views/Admin.vue'
+import ViewPokemon from '../views/ViewPokemon.vue'
+import CreatePokemon from '../views/CreatePokemon.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
     path: '/',
-    name: 'home',
-    component: Home
+    name: 'CreatePokemon',
+    component: CreatePokemon
   },
   {
-    path: '/admin',
-    name: 'admin',
-    component: Admin
+    path: '/ViewPokemon',
+    name: 'ViewPokemon',
+    component: ViewPokemon
   }
 ]
 
